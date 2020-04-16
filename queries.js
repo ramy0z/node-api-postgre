@@ -7,11 +7,12 @@ const { Pool, Client } = require('pg');
 //   password: 'password',
 //   port: 5432,
 // })
-var conString = "postgres://postgres:123123@localhost:5432/test";
+// var conString = "postgres://postgres:123123@localhost:5432/test";
 
-const pool = new Pool({connectionString: conString});
+// const pool = new Pool({connectionString: conString});
 
-
+const pool = new Pool({connectionString: process.env.DATABASE_URL,
+  ssl: true,});
  
 async function getUsers (request, response){
   // validation request 
