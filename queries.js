@@ -1,5 +1,7 @@
 
 const { Pool, Client } = require('pg');
+const dotenv = require('dotenv');
+dotenv.config();
 // const pool = new Pool({
 //   user: 'user',
 //   host: 'localhost',
@@ -10,9 +12,8 @@ const { Pool, Client } = require('pg');
 // var conString = "postgres://postgres:123123@localhost:5432/test";
 
 // const pool = new Pool({connectionString: conString});
-
 const pool = new Pool({connectionString: process.env.DATABASE_URL,
-  ssl: true,});
+  ssl: true});
  
 async function getUsers (request, response){
   // validation request 
